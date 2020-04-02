@@ -61,7 +61,7 @@ for event in longpoll.listen():
                 Support.csv_writer(os.environ.get('csv_path'), [event.obj.peer_id])
                 conversation.answer_quiz_ended(vk, 'На этом все. ', None, event, correct_answers, len(questions))
 
-        if 'привет' in event.obj.text.lower().split():
+        if ('привет' in event.obj.text.lower().split()) or ('начать' in event.obj.text.lower().split()):
             conversation.answer_hello(vk, None, Interface.get_simple_keyboard(['Приступим']), event)
 
         if 'приступим' in event.obj.text.lower().split():
